@@ -40,19 +40,5 @@ pipeline{
 
         }
     }
-        post {
-        success {
-            emailext (
-                subject: 'Docker image pushed to ECR',
-                body: 'The Docker image was successfully pushed to ECR.',
-                to: 'amit.maurya@xenonstack.com',
-                mimeType: 'text/html',
-                attachLog: true,
-                compressLog: true,
-                replyTo: 'amit.maurya@xenonstack.com',
-                from: 'amit.maurya@xenonstack.com'
-            )
-        }
-    }
 }
 
