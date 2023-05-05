@@ -7,7 +7,7 @@ pipeline{
         AWS_ACCOUNT_ID = "964715276857"
         AWS_REGION = "us-west-2"
         IMAGE_REPO_NAME = "jenkins_push"
-        IMAGE_TAG = "2"
+        IMAGE_TAG = "latest"
         REPOSITORY_URL = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
     }
     stages{
