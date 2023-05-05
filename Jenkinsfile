@@ -1,10 +1,13 @@
 pipeline{
     agent any
+    parameters{
+        booleanParam(name: 'PUSH_IMAGE_TO_ECR', defaultValue: true, description: 'Whether to send an email notification upon ECR image push')
+    }
     environment {
         AWS_ACCOUNT_ID = "964715276857"
         AWS_REGION = "us-west-2"
         IMAGE_REPO_NAME = "jenkins_push"
-        IMAGE_TAG = "latest"
+        IMAGE_TAG = "1"
         REPOSITORY_URL = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
     }
     stages{
@@ -33,8 +36,12 @@ pipeline{
         stage("Pushing Image to ECR"){
             steps{
                 script{
+                    if (params.PUSH_IMAGE_TO_ECR){                       
                     sh "docker tag jenkins_push:latest 964715276857.dkr.ecr.us-west-2.amazonaws.com/jenkins_push:latest" 
                     sh "docker push 964715276857.dkr.ecr.us-west-2.amazonaws.com/jenkins_push:latest"
+                    }                    
+                } else {
+                    echo "The image has not been pushed"
                 }
             }
 
