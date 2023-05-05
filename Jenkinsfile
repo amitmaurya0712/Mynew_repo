@@ -25,8 +25,8 @@ pipeline{
         stage("Pushing Image to ECR"){
             steps{
                 script{
-                    sh "docker tag ${IMAGE_REPO_NAME}:${IMAGE_TAG} ${REPOSITORY_URL}:${IMAGE_TAG}" 
-                    sh "docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/jenkins_push:${IMAGE_TAG}"
+                    sh "docker tag jenkins_push:latest 964715276857.dkr.ecr.us-west-2.amazonaws.com/jenkins_push:latest" 
+                    sh "docker push 964715276857.dkr.ecr.us-west-2.amazonaws.com/jenkins_push:latest"
                 }
             }
 
