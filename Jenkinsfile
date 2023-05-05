@@ -39,9 +39,9 @@ pipeline{
                     if (params.PUSH_IMAGE_TO_ECR){                       
                     sh "docker tag jenkins_push:latest 964715276857.dkr.ecr.us-west-2.amazonaws.com/jenkins_push:latest" 
                     sh "docker push 964715276857.dkr.ecr.us-west-2.amazonaws.com/jenkins_push:latest"
-                    }                    
-                } else {
+                    } else {
                     echo "The image has not been pushed"
+                }
                 }
             }
 
